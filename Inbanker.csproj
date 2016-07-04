@@ -65,6 +65,9 @@
     <EmbeddedResource Include="VerPedidosEnviados.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="RedirectLogin.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -113,6 +116,9 @@
     </Compile>
     <Compile Include="VerPedidosEnviados.xaml.cs">
       <DependentUpon>VerPedidosEnviados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RedirectLogin.xaml.cs">
+      <DependentUpon>RedirectLogin.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

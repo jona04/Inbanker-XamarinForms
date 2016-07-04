@@ -10,9 +10,9 @@ namespace Inbanker
 
 			Title = "Inbanker";
 
-			this.btnLogar.Clicked += async (sender, e) =>
+			this.btnLogar.Clicked += (sender, e) =>
 			{
-				await Navigation.PushAsync(new Login());
+				Navigation.PushModalAsync(new Login());
 			};
 
 		}

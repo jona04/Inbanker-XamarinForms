@@ -8,21 +8,20 @@ namespace Inbanker
 	{
 		MasterPage masterPage;
 
-		public MainPageCS(Usuario eu,List<Amigos> list_amigos)
+		public MainPageCS(Usuario eu, List<Amigos> list_amigos)
 		{
 
-			NavigationPage.SetHasNavigationBar(this, false);
+			//if (Device.OS == TargetPlatform.Windows)
+			//{
+			//	Master.Icon = "icon.png";
+			//}
+
+			//faz desaparece o botao de voltar do toolbal
+			//NavigationPage.SetHasNavigationBar(this, false);
 
 			masterPage = new MasterPage(eu);
 			Master = masterPage;
 			Detail = new NavigationPage(new ListaAmigos(eu,list_amigos));
-
-			//masterPage.ListView.ItemSelected += OnItemSelected;
-
-			if (Device.OS == TargetPlatform.Windows)
-			{
-				Master.Icon = "icon.png";
-			}
 
 			masterPage.ListView.ItemSelected += (sender, e) =>
 			{
@@ -40,34 +39,22 @@ namespace Inbanker
 						case (2):
 							Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType, eu));
 							break;
-						default:
-							Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType, eu, list_amigos));
+						case (3):
+							// Kill the access_token so we don't look like we are logged in anymore.
+							App.Current.Properties["access_token"] = "";
+							// Make the main page the StartPage, which is where auth is launched from.
+							App.Current.MainPage = new LoginPage();
 							break;
 					}
-
-					//if(item.ParamType == 1)
-						
-
-					//else
-					//	Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
 
 					masterPage.ListView.SelectedItem = null;
 					IsPresented = false;
 				}
 
 			};
+
 		}
 
-		//void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-		//{
-		//	var item = e.SelectedItem as MasterPageItem;
-		//	if (item != null)
-		//	{
-		//		Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-		//		masterPage.ListView.SelectedItem = null;
-		//		IsPresented = false;
-		//	}
-		//}
 	}
 }
 

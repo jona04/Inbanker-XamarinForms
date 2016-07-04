@@ -22,27 +22,26 @@ namespace Inbanker
 				Title = "Lista Amigos",
 				//IconSource = "contacts.png",
 				TargetType = typeof(ListaAmigos),
-				ParamType = 1,
+				ParamType = 1, //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Pedidos enviados",
 				//IconSource = "contacts.png",
 				TargetType = typeof(PedidosFeitos),
-				ParamType = 2
+				ParamType = 2 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Pedidos recebidos",
 				//IconSource = "todo.png",
 				TargetType = typeof(PedidosRecebidos),
-				ParamType = 2
+				ParamType = 2 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Sair",
-				//IconSource = "reminders.png",
-				//TargetType = typeof(ReminderPage)
+				ParamType = 3 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 
 			listView.ItemsSource = masterPageItems;
