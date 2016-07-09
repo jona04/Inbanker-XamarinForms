@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Inbanker.InicioPage">
+	<ContentPage.Content>
+
+
+		<ScrollView>
+			<StackLayout>
+				
+				<StackLayout HorizontalOptions="Center" VerticalOptions="FillAndExpand" Padding="20">
+					<Image x:Name="img_inicio" />
+					<Label x:Name="lbl_inicio" FontSize="30" />
+				</StackLayout>
+
+				<StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
+					<StackLayout Orientation="Vertical">
+						<Button x:Name="btn_list_amigos" Text="Lista Amigos" />
+						<Button x:Name="btn_pedidos_enviados" Text="Pedidos Enviados" />
+					</StackLayout>
+					<StackLayout Orientation="Vertical">
+						<Button x:Name="btn_pedidos_recebidos" Text="Pedidos Recebidos" />
+						<Button x:Name="btn_config" Text="Configuraçoes" />
+					</StackLayout>
+				</StackLayout>
+						
+			</StackLayout>
+		</ScrollView>
+
+		
+	</ContentPage.Content>
+</ContentPage>

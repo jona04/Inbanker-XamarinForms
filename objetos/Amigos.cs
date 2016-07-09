@@ -1,6 +1,4 @@
-﻿using System;
-
-using Xamarin.Forms;
+﻿using SQLite.Net.Attributes;
 
 namespace Inbanker
 {
@@ -9,6 +7,9 @@ namespace Inbanker
 	{
 		public string id { get; set; }
 		public string name { get; set; }
+		public string url_picture { get; set;}
+
+		[Ignore]
 		public Picture picture { get; set; }
 
 	}

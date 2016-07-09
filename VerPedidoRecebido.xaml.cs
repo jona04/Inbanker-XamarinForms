@@ -14,11 +14,14 @@ namespace Inbanker
 		{
 			InitializeComponent();
 
-			Title = "Pedido Recebido";
+			Title = "Pedidos Recebidos";
 
-			//usados para pegar o usuario e amigos do sqlite
-			AcessoDadosUsuario dadosUsuario = new AcessoDadosUsuario();
+			//pegamos os dados do usuario logado que esta no msqlite
+			AcessoDadosUsuario dados = new AcessoDadosUsuario();
+			var eu = dados.ObterUsuario();
+
 			AcessoDadosAmigos dadosAmigos = new AcessoDadosAmigos();
+			var list_amigos = dadosAmigos.Listar();
 
 			nome_usuario.Text = trans.trans_nome_user1;
 
@@ -112,10 +115,7 @@ namespace Inbanker
 
 						await DisplayAlert("InBanker", "Voce recusou esse pedido de emprestimo de " + trans.trans_nome_user1, "Ok");
 
-						//usado para redirecionar a pagina inicial
-						var eu = dadosUsuario.ObterUsuario();
-						var list_amigos = dadosAmigos.Listar();
-						App.Current.MainPage = new MainPageCS(eu,list_amigos, new InicioPage(eu, list_amigos));
+						App.Current.MainPage = new MainPageCS(new InicioPage());
 
 					}
 
@@ -151,9 +151,7 @@ namespace Inbanker
 
 						await DisplayAlert("InBanker", "Voce aceitou o pedido. Voce sera informado quando seu amigo(a) " + trans.trans_nome_user1 + " solicitar a quitaçao da divida.", "Ok");
 
-						//usado para redirecionar a pagina inicial
-						//var eu = dados.ObterUsuario();
-						//App.Current.MainPage = new MainPageCS(eu, list_amigos, new InicioPage(eu, list_amigos));
+						App.Current.MainPage = new MainPageCS(new InicioPage());
 
 					}
 
@@ -191,9 +189,7 @@ namespace Inbanker
 
 						await DisplayAlert("InBanker", "Voce confirmou o recebimento do valor para quitaçao do emprestimo solicitado por " + trans.trans_nome_user1 + ". Parabens, essa transacao foi finalizada.", "Ok");
 
-						//usado para redirecionar a pagina inicial
-						//var eu = dados.ObterUsuario();
-						//App.Current.MainPage = new MainPageCS(eu, list_amigos, new InicioPage(eu, list_amigos));
+						App.Current.MainPage = new MainPageCS(new InicioPage());
 
 					}
 
@@ -220,8 +216,8 @@ namespace Inbanker
 					if (result.Equals("ok"))
 					{
 
-						stack_btn_acc_pagamento.IsVisible = false;
-						msg_pedido.Text = "Voce recusou uma solicitaçao de pagamento feito pelo seu amigo(a) "+ trans.trans_nome_user1 +". Agora aguarde uma nova solicitaçao de pagamento.";
+						//stack_btn_acc_pagamento.IsVisible = false;
+						//msg_pedido.Text = "Voce recusou uma solicitaçao de pagamento feito pelo seu amigo(a) "+ trans.trans_nome_user1 +". Agora aguarde uma nova solicitaçao de pagamento.";
 
 						//await DisplayAlert ("Inbanker", "Pedido foi enviado para "+nome,"Ok");
 
@@ -230,9 +226,7 @@ namespace Inbanker
 
 						await DisplayAlert("InBanker", "Voce recusou uma solicitaçao de pagamento feito pelo seu amigo(a) " + trans.trans_nome_user1 + ". Agora aguarde uma nova solicitaçao de pagamento.", "Ok");
 
-						//usado para redirecionar a pagina inicial
-						//var eu = dados.ObterUsuario();
-						//App.Current.MainPage = new MainPageCS(eu, list_amigos, new InicioPage(eu, list_amigos));
+						App.Current.MainPage = new MainPageCS(new InicioPage());
 
 					}
 

@@ -7,12 +7,17 @@ namespace Inbanker
 {
 	public partial class ResultadoSimulador : ContentPage
 	{
-		public ResultadoSimulador(Transacao trans,List<Amigos> list_amigos)
+		public ResultadoSimulador(Transacao trans)
 		{
 			InitializeComponent();
 
-			//usados para pegar o usuario eu do sqlite
+			//pegamos os dados do usuario logado que esta no msqlite
 			AcessoDadosUsuario dados = new AcessoDadosUsuario();
+			var eu = dados.ObterUsuario();
+
+			//para listar os amigos que estao armazenados no sqlite
+			AcessoDadosAmigos dadosAmigos = new AcessoDadosAmigos();
+			var list_amigos = dadosAmigos.Listar();
 
 			//fomula para calcular o valor total a ser pago, ao mesmo tempo que arredondamos o resultado final para 2 casas decimais depois da virgula
 			double capital = double.Parse(trans.trans_valor);
@@ -61,8 +66,7 @@ namespace Inbanker
 
 						await DisplayAlert("InBanker", "Pedido enviado, aguarde a resposta do(a) "+trans.trans_nome_user2, "Ok");
 
-						var eu = dados.ObterUsuario();
-						App.Current.MainPage = new MainPageCS(eu,list_amigos, new InicioPage(eu,list_amigos));
+						App.Current.MainPage = new MainPageCS(new InicioPage());
 
 					}
 				}

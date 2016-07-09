@@ -10,11 +10,19 @@ namespace Inbanker
 
 		private List<Amigos> list_usu;
 
-		public ListaAmigos(Usuario eu,List<Amigos> list_amigos)
+		public ListaAmigos()
 		{
 			InitializeComponent();
 
 			Title = "Lista Amigos";
+
+			//pegamos os dados do usuario logado que esta no msqlite
+			AcessoDadosUsuario dados = new AcessoDadosUsuario();
+			var eu = dados.ObterUsuario();
+
+			//para listar os amigos que estao armazenados no sqlite
+			AcessoDadosAmigos dadosAmigos = new AcessoDadosAmigos();
+			var list_amigos = dadosAmigos.Listar();
 
 			if (list_amigos == null)
 			{
@@ -33,7 +41,7 @@ namespace Inbanker
 					if (item == null)
 						return;
 
-					await Navigation.PushAsync(new SimuladorPage(eu.id_usuario, eu.nome_usuario, item.id, item.name,item.picture.data.url,list_amigos));
+					await Navigation.PushAsync(new SimuladorPage(eu.id_usuario, eu.nome_usuario, item.id, item.name,item.url_picture));
 				};
 
 			}

@@ -8,7 +8,7 @@ namespace Inbanker
 	{
 		MasterPage masterPage;
 
-		public MainPageCS(Usuario eu, List<Amigos> list_amigos,Page page)
+		public MainPageCS(Page page)
 		{
 
 			//if (Device.OS == TargetPlatform.Windows)
@@ -19,11 +19,13 @@ namespace Inbanker
 			//faz desaparece o botao de voltar do toolbal
 			//NavigationPage.SetHasNavigationBar(this, false);
 
-			masterPage = new MasterPage(eu);
+			//pegamos os dados do usuario logado que esta no msqlite
+			AcessoDadosUsuario dados = new AcessoDadosUsuario();
+			var eu = dados.ObterUsuario();
+
+			masterPage = new MasterPage();
 			Master = masterPage;
 			Detail = new NavigationPage(page);
-
-			AcessoDadosUsuario dados = new AcessoDadosUsuario();
 
 			masterPage.ListView.ItemSelected += (sender, e) =>
 			{
@@ -36,12 +38,9 @@ namespace Inbanker
 					switch (item.ParamType)
 					{
 						case (1):
-							Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType, eu, list_amigos));
+							Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
 							break;
 						case (2):
-							Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType, eu));
-							break;
-						case (3):
 							// Kill the access_token so we don't look like we are logged in anymore.
 							//App.Current.Properties["access_token"] = "";
 							dados.DeleteUsuario(eu.id_usuario);

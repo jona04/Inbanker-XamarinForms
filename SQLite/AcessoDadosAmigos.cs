@@ -14,33 +14,34 @@ namespace Inbanker
 			var config = DependencyService.Get<IConfig>();//utiliza dependency para verificar qual plataforma esta sendo utilizada
 			_conexao = new SQLite.Net.SQLiteConnection(config.Plataforma, System.IO.Path.Combine(config.DiretorioDB, "bancodados.db3"));
 
-			_conexao.CreateTable<AmigosSQLite>();
+			_conexao.CreateTable<Amigos>();
 		}
 
-		public void InsertAmigos(AmigosSQLite amigos)
+		public void InsertAmigos(Amigos amigos)
 		{
 			_conexao.Insert(amigos);
 		}
 
-		//public void DeleteAmigos(string id_usu)
-		//{
-		//	//_conexao.Delete(usu);
-		//	_conexao.Query<Amigos>("DELETE FROM [Usuario] WHERE [id_usuario] = " + id_usu);
-		//}
+		//usado sempre antes de adicoonar a lista no login, para que nao se tenha usuarios repitidos
+		public void DeleteAmigos()
+		{
+			//_conexao.Delete(usu);
+			_conexao.Query<Amigos>("DELETE FROM [Amigos]");
+		}
 
 		//public Amigos ObterAmigos()
 		//{
 		//	return _conexao.Table<Amigos>().FirstOrDefault();
 		//}
 
-		public void UpdateAmigos(AmigosSQLite amigos)
+		public void UpdateAmigos(Amigos amigos)
 		{
 			_conexao.Update(amigos);
 		}
 
-		public List<AmigosSQLite> Listar()
+		public List<Amigos> Listar()
 		{
-			return _conexao.Table<AmigosSQLite>().OrderBy(c => c.name).ToList();
+			return _conexao.Table<Amigos>().OrderBy(c => c.name).ToList();
 		}
 
 		//usado para fechar conexao do sqlite

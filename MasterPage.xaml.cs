@@ -9,9 +9,13 @@ namespace Inbanker
 	{
 		public ListView ListView { get { return listView; } }
 
-		public MasterPage(Usuario eu)
+		public MasterPage()
 		{
 			InitializeComponent();
+
+			//pegamos os dados do usuario logado que esta no msqlite
+			AcessoDadosUsuario dados = new AcessoDadosUsuario();
+			var eu = dados.ObterUsuario();
 
 			img.Source = eu.url_img;
 			nome.Text = eu.nome_usuario;
@@ -36,19 +40,19 @@ namespace Inbanker
 				Title = "Pedidos enviados",
 				//IconSource = "contacts.png",
 				TargetType = typeof(PedidosFeitos),
-				ParamType = 2 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+				ParamType = 1 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Pedidos recebidos",
 				//IconSource = "todo.png",
 				TargetType = typeof(PedidosRecebidos),
-				ParamType = 2 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+				ParamType = 1 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Sair",
-				ParamType = 3 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+				ParamType = 2 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 
 			listView.ItemsSource = masterPageItems;

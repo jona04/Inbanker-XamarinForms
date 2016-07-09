@@ -7,7 +7,7 @@ namespace Inbanker
 {
 	public partial class MainPage : MasterDetailPage
 	{
-		public MainPage(Usuario eu)
+		public MainPage()
 		{
 			InitializeComponent();
 
@@ -17,6 +17,10 @@ namespace Inbanker
 			{
 				Master.Icon = "icon.png";
 			}
+
+			//pegamos os dados do usuario logado que esta no msqlite
+			AcessoDadosUsuario dados = new AcessoDadosUsuario();
+			var eu = dados.ObterUsuario();
 
 			masterPage.ListView.ItemSelected += (sender, e) =>
 			{ 

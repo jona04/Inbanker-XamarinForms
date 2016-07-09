@@ -14,9 +14,13 @@ namespace Inbanker
 		public string valor;
 		Transacao trans;
 
-		public SimuladorPage(string id_user_logado, string nome_user_logado, string id_usuario, string nome, string img,List<Amigos> list_amigos)
+		public SimuladorPage(string id_user_logado, string nome_user_logado, string id_usuario, string nome, string img)
 		{
 			InitializeComponent();
+
+			//para listar os amigos que estao armazenados no sqlite
+			AcessoDadosAmigos dadosAmigos = new AcessoDadosAmigos();
+			var list_amigos = dadosAmigos.Listar();
 
 			trans = new Transacao
 			{
@@ -63,7 +67,7 @@ namespace Inbanker
 				var result = await IsValid();
 				if (result)
 				{
-					await Navigation.PushAsync(new ResultadoSimulador(trans,list_amigos));
+					await Navigation.PushAsync(new ResultadoSimulador(trans));
 					//await DisplayAlert ("Alerta", "Valor :"+valor,"Ok");
 				}
 			};

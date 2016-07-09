@@ -14,8 +14,6 @@ namespace Inbanker
 
 		public object[] Args { get; set; }
 
-		public object[] Args2 { get; set; }
-
 		public int ParamType { get; set; } //para saber quais parametros sera passado a detail page
 	}
 }

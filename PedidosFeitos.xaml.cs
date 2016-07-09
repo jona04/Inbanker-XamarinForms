@@ -7,11 +7,15 @@ namespace Inbanker
 {
 	public partial class PedidosFeitos : ContentPage
 	{
-		public PedidosFeitos(Usuario eu)
+		public PedidosFeitos()
 		{
 			InitializeComponent();
 
 			Title = "Pedidos Enviados";
+
+			//pegamos os dados do usuario logado que esta no msqlite
+			AcessoDadosUsuario dados = new AcessoDadosUsuario();
+			var eu = dados.ObterUsuario();
 
 			VerificaListaTransacoes(eu);
 

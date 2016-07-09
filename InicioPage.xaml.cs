@@ -7,7 +7,7 @@ namespace Inbanker
 {
 	public partial class InicioPage : ContentPage
 	{
-		public InicioPage(Usuario eu, List<Amigos> list_amigos)
+		public InicioPage()
 		{
 			InitializeComponent();
 
@@ -19,17 +19,17 @@ namespace Inbanker
 			this.btn_list_amigos.Clicked += (sender, e) =>
 			{
 				//Navigation.PushModalAsync(new MainPageCS(eu, list_amigos,new ListaAmigos(eu, list_amigos)));
-				App.Current.MainPage = new MainPageCS(eu, list_amigos, new ListaAmigos(eu, list_amigos)); //utilizamos esse formato para nao repetirmo a mesma page quando o usuario apertar no botaao voltar
+				App.Current.MainPage = new MainPageCS(new ListaAmigos()); //utilizamos esse formato para nao repetirmo a mesma page quando o usuario apertar no botaao voltar
 			};
 			this.btn_pedidos_enviados.Clicked += (sender, e) =>
 			{
 				//Navigation.PushModalAsync(new PedidosFeitos(eu));
-				App.Current.MainPage = new MainPageCS(eu, list_amigos, new PedidosFeitos(eu));
+				App.Current.MainPage = new MainPageCS(new PedidosFeitos());
 			};
 			this.btn_pedidos_recebidos.Clicked += (sender, e) =>
 			{
 				//Navigation.PushModalAsync(new PedidosRecebidos(eu));
-				App.Current.MainPage = new MainPageCS(eu, list_amigos, new PedidosRecebidos(eu));
+				App.Current.MainPage = new MainPageCS(new PedidosRecebidos());
 			};
 			this.btn_config.Clicked += async (sender, e) =>
 			{

@@ -92,13 +92,13 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="objetos\Usuario.cs" />
-    <Compile Include="objetos\Amigos.cs" />
+    <Compile Include="Objetos\Usuario.cs" />
+    <Compile Include="Objetos\Amigos.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPageCS.cs" />
-    <Compile Include="objetos\MasterPageItem.cs" />
+    <Compile Include="Objetos\MasterPageItem.cs" />
     <Compile Include="SimuladorPage.xaml.cs">
       <DependentUpon>SimuladorPage.xaml</DependentUpon>
     </Compile>
@@ -107,7 +107,7 @@
     </Compile>
     <Compile Include="Webservice\ServiceWrapper.cs" />
     <Compile Include="ResultPlayService.cs" />
-    <Compile Include="objetos\Transacao.cs" />
+    <Compile Include="Objetos\Transacao.cs" />
     <Compile Include="PedidosFeitos.xaml.cs">
       <DependentUpon>PedidosFeitos.xaml</DependentUpon>
     </Compile>
@@ -129,7 +129,6 @@
       <DependentUpon>InicioPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLite\AcessoDadosAmigos.cs" />
-    <Compile Include="objetos\AmigosSQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
@@ -161,7 +160,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="objetos\" />
+    <Folder Include="Objetos\" />
     <Folder Include="Webservice\" />
     <Folder Include="SQLite\" />
   </ItemGroup>

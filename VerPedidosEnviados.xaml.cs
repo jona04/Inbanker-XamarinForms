@@ -12,7 +12,7 @@ namespace Inbanker
 			InitializeComponent();
 
 
-			Title = "Pedido Enviado";
+			Title = "Pedidos Enviados";
 
 			nome_usuario.Text = trans.trans_nome_user2;
 
@@ -138,13 +138,15 @@ namespace Inbanker
 
 					if (result2.Equals("ok"))
 					{
-						stack_confirm_receb.IsVisible = false;
-						stack_solicitar_pag.IsVisible = false;
-						msg.Text = "Voce realizou uma solicitaçao de quitaçao do valor pedido para emprestimo. Aguarde a resposta do "+ trans.trans_nome_user2;
+						//stack_confirm_receb.IsVisible = false;
+						//stack_solicitar_pag.IsVisible = false;
+						//msg.Text = "Voce realizou uma solicitaçao de quitaçao do valor pedido para emprestimo. Aguarde a resposta do "+ trans.trans_nome_user2;
 
 						var result = await serviceWrapper.EnviarNotificacaoConfirmPagamento(trans);
 						//lblNome2.Text = "get call says: " + result;
 
+						await DisplayAlert ("InBanker", "Voce realizou uma solicitaçao de quitaçao do valor pedido para emprestimo. Aguarde a resposta do "+ trans.trans_nome_user2,"Ok");
+						App.Current.MainPage = new MainPageCS(new InicioPage());
 					}
 
 				}
