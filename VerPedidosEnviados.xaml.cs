@@ -29,13 +29,14 @@ namespace Inbanker
 			string juros_mensal2 = String.Format("{0:0.00}", juros_mensal);
 			string taxa_fixa2 = String.Format("{0:0.00}", taxa_fixa);
 
-			valor_juros.Text = juros_mensal2;
-			valor_taxa_fixa.Text = "Valor de serviço: R$ " + taxa_fixa2;
+			string valor = String.Format("{0:0.00}", Double.Parse(trans.trans_valor));
 
-			valor_solicitado.Text = trans.trans_valor;
+			valor_solicitado.Text = "R$ "+valor;
 			lbldata_vencimento.Text = trans.trans_vencimento;
-			dias_corrido.Text = trans.trans_data_pedido;
-			valor_total_pago.Text = total.ToString();
+			//dias_corrido.Text = trans.trans_data_pedido;
+			valor_juros.Text = "R$ "+juros_mensal2;
+			valor_taxa_fixa.Text = "R$ " + taxa_fixa2;
+			valor_total_pago.Text = "R$ "+total;
 
 
 			//manipulamos o xmal de acordo com a resposta dada ao pedido
@@ -52,8 +53,8 @@ namespace Inbanker
 					if (trans.trans_recebimento_empre.Equals("0"))
 					{
 						stack_confirm_receb.IsVisible = true;
-						msg.Text = "O usuario aceitou seu pedido de emprestimo.";
-						msg_confirm_recb.Text = "Voce confirma o recebimento do valor?";
+						msg.Text = "Seu amigo "+trans.trans_nome_user2+" aceitou seu pedido de emprestimo.";
+						msg_confirm_recb.Text = "Confirme o recebimento do valor solicitado.";
 					}
 					else {
 

@@ -16,36 +16,32 @@ namespace Inbanker
 
 			Title = "Pedido Recebido";
 
+			//usados para pegar o usuario e amigos do sqlite
+			AcessoDadosUsuario dadosUsuario = new AcessoDadosUsuario();
+			AcessoDadosAmigos dadosAmigos = new AcessoDadosAmigos();
+
 			nome_usuario.Text = trans.trans_nome_user1;
-
-			////fomula para calcular o valor total a ser pago, ao mesmo tempo que arredondamos o resultado final para 2 casas decimais depois da virgula
-			//double capital = double.Parse(valor);
-			//double total = Math.Round(capital * (1 + (0.00132667 * int_dias)), 2);
-
-			//valor_solicitado.Text = valor;
-			//dias_pagamento.Text = dias.ToString();
-			//valor_total_pago.Text = total.ToString();
-
 
 			//fomula para calcular o valor total a ser pago, ao mesmo tempo que arredondamos o resultado final para 2 casas decimais depois da virgula
 			double capital = double.Parse(trans.trans_valor);
-			//double juros_mensal = Math.Round(capital * (1+(0.00132667*dias)),2);
 
 			double juros_mensal = Math.Round(capital * (0.00066333 * trans.trans_dias), 2);
-			double taxa_fixa = Math.Round(capital * 0.0099, 2, MidpointRounding.ToEven);
+			//double taxa_fixa = Math.Round(capital * 0.0099, 2, MidpointRounding.ToEven);
 
-			double total = juros_mensal + taxa_fixa + capital;
+			double total = juros_mensal + capital;
 
 			string juros_mensal2 = String.Format("{0:0.00}", juros_mensal);
-			string taxa_fixa2 = String.Format("{0:0.00}", taxa_fixa);
+			//string taxa_fixa2 = String.Format("{0:0.00}", taxa_fixa);
 
-			valor_juros.Text = juros_mensal2;
-			valor_taxa_fixa.Text = "Valor de serviço: R$ " + taxa_fixa2;
+			string valor = String.Format("{0:0.00}", Double.Parse(trans.trans_valor));
 
-			valor_solicitado.Text = trans.trans_valor;
+			valor_rendimento.Text = "R$ "+juros_mensal2;
+			//valor_taxa_fixa.Text = "R$ " + taxa_fixa2;
+
+			valor_solicitado.Text = "R$ "+valor;
 			//data_vencimento.Text = trans.trans_vencimento;
-			dias_pagamento.Text = trans.trans_dias.ToString();
-			valor_total_pago.Text = total.ToString();
+			dias_pagamento.Text = trans.trans_vencimento;
+			valor_total_pago.Text = "R$ "+total;
 
 
 			//manipulamos o xmal de acordo com a resposta dada ao pedido
@@ -66,7 +62,7 @@ namespace Inbanker
 					if (trans.trans_resposta_pagamento.Equals("0")) // se ainda nao houve solicitacao de pagamento
 					{
 						
-						msg_pedido.Text = "Voce aceitou o pedido, aguarde agora pelo pagamento de seu emprestimento. Quando isso acontecer voce recebera uma solicitaçao de confirmaçao de pagamento.";
+						msg_pedido.Text =  "Voce aceitou o pedido. Voce sera informado quando seu amigo(a) " + trans.trans_nome_user1 + " solicitar a quitaçao da divida.";
 
 					}
 					if (trans.trans_resposta_pagamento.Equals("1")) // o usuario devedor esta solicitando confirmaçao de recebimento de pagamento
@@ -84,7 +80,7 @@ namespace Inbanker
 					if (trans.trans_resposta_pagamento.Equals("3")) // o usuario esta solicitando confirmaçao de pagamento
 					{
 						stack_btn_acc_pagamento.IsVisible = false;
-						msg_pedido.Text = "O pedido foi aceito. Voce fez o emprestimo. Voce ja confirmou o recebimento do pagamento.";
+						msg_pedido.Text = "Voce confirmou o recebimento do valor para quitaçao do emprestimo solicitado por " + trans.trans_nome_user1 + ".Parabens, essa transacao foi finalizada.";
 
 					}
 					break;
@@ -107,14 +103,19 @@ namespace Inbanker
 					if (result.Equals("ok"))
 					{
 
-						stack_btn_acc_pedido.IsVisible = false;
-						stack_msg_pedido.IsVisible = true;
-						msg_pedido.Text = "Voce recusou esse pedido de emprestimo.";
-
-						//await DisplayAlert ("Inbanker", "Pedido foi enviado para "+nome,"Ok");
+						//stack_btn_acc_pedido.IsVisible = false;
+						//stack_msg_pedido.IsVisible = true;
+						//msg_pedido.Text = "Voce recusou esse pedido de emprestimo.";
 
 						var result2 = await serviceWrapper.EnviarNotificacaoRespostaUsuario(trans.trans_id,trans.trans_id_user1, 1);
 						//lblNome2.Text = "get call says: " + result2;
+
+						await DisplayAlert("InBanker", "Voce recusou esse pedido de emprestimo de " + trans.trans_nome_user1, "Ok");
+
+						//usado para redirecionar a pagina inicial
+						var eu = dadosUsuario.ObterUsuario();
+						var list_amigos = dadosAmigos.Listar();
+						App.Current.MainPage = new MainPageCS(eu,list_amigos, new InicioPage(eu, list_amigos));
 
 					}
 
@@ -141,14 +142,18 @@ namespace Inbanker
 					if (result.Equals("ok"))
 					{
 
-						stack_btn_acc_pedido.IsVisible = false;
-						stack_msg_pedido.IsVisible = true;
-						msg_pedido.Text = "Voce aceitou o pedido, aguarde agora pelo pagamento de seu emprestimento. Quando isso acontecer voce recebera uma solicitaçao de confirmaçao de pagamento.";
-
-						//await DisplayAlert ("Inbanker", "Pedido foi enviado para "+nome,"Ok");
+						//stack_btn_acc_pedido.IsVisible = false;
+						//stack_msg_pedido.IsVisible = true;
+						//msg_pedido.Text = "Voce aceitou o pedido. Voce sera informado quando seu amigo " + trans.trans_nome_user1 + " solicitar a quitaçao da divida.";
 
 						var result2 = await serviceWrapper.EnviarNotificacaoRespostaUsuario(trans.trans_id, trans.trans_id_user1, 2);
 						//lblNome2.Text = "get call says: " + result2;
+
+						await DisplayAlert("InBanker", "Voce aceitou o pedido. Voce sera informado quando seu amigo(a) " + trans.trans_nome_user1 + " solicitar a quitaçao da divida.", "Ok");
+
+						//usado para redirecionar a pagina inicial
+						//var eu = dados.ObterUsuario();
+						//App.Current.MainPage = new MainPageCS(eu, list_amigos, new InicioPage(eu, list_amigos));
 
 					}
 
@@ -176,13 +181,19 @@ namespace Inbanker
 					if (result.Equals("ok"))
 					{
 
-						stack_btn_acc_pagamento.IsVisible = false;
-						msg_pedido.Text = "O pedido foi aceito. Voce fez o emprestimo. Voce ja confirmou o recebimento do pagamento.";
+						//stack_btn_acc_pagamento.IsVisible = false;
+						//msg_pedido.Text = "O pedido foi aceito. Voce fez o emprestimo. Voce ja confirmou o recebimento do pagamento.";
 
 						//await DisplayAlert ("Inbanker", "Pedido foi enviado para "+nome,"Ok");
 
 						var result2 = await serviceWrapper.EnviarNotificacaoRespostaConfirmPagamento(trans, 3);
 						//lblNome2.Text = "get call says: " + result2;
+
+						await DisplayAlert("InBanker", "Voce confirmou o recebimento do valor para quitaçao do emprestimo solicitado por " + trans.trans_nome_user1 + ". Parabens, essa transacao foi finalizada.", "Ok");
+
+						//usado para redirecionar a pagina inicial
+						//var eu = dados.ObterUsuario();
+						//App.Current.MainPage = new MainPageCS(eu, list_amigos, new InicioPage(eu, list_amigos));
 
 					}
 
@@ -210,12 +221,18 @@ namespace Inbanker
 					{
 
 						stack_btn_acc_pagamento.IsVisible = false;
-						msg_pedido.Text = "O pedido foi aceito, e voce recusou uma solicitaçao de pagamento. Agora aguarde uma nova solicitaçao de pagamento.";
+						msg_pedido.Text = "Voce recusou uma solicitaçao de pagamento feito pelo seu amigo(a) "+ trans.trans_nome_user1 +". Agora aguarde uma nova solicitaçao de pagamento.";
 
 						//await DisplayAlert ("Inbanker", "Pedido foi enviado para "+nome,"Ok");
 
 						var result2 = await serviceWrapper.EnviarNotificacaoRespostaConfirmPagamento(trans, 2);
 						//lblNome2.Text = "get call says: " + result2;
+
+						await DisplayAlert("InBanker", "Voce recusou uma solicitaçao de pagamento feito pelo seu amigo(a) " + trans.trans_nome_user1 + ". Agora aguarde uma nova solicitaçao de pagamento.", "Ok");
+
+						//usado para redirecionar a pagina inicial
+						//var eu = dados.ObterUsuario();
+						//App.Current.MainPage = new MainPageCS(eu, list_amigos, new InicioPage(eu, list_amigos));
 
 					}
 

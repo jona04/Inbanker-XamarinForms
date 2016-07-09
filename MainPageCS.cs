@@ -8,7 +8,7 @@ namespace Inbanker
 	{
 		MasterPage masterPage;
 
-		public MainPageCS(Usuario eu, List<Amigos> list_amigos)
+		public MainPageCS(Usuario eu, List<Amigos> list_amigos,Page page)
 		{
 
 			//if (Device.OS == TargetPlatform.Windows)
@@ -21,7 +21,9 @@ namespace Inbanker
 
 			masterPage = new MasterPage(eu);
 			Master = masterPage;
-			Detail = new NavigationPage(new ListaAmigos(eu,list_amigos));
+			Detail = new NavigationPage(page);
+
+			AcessoDadosUsuario dados = new AcessoDadosUsuario();
 
 			masterPage.ListView.ItemSelected += (sender, e) =>
 			{
@@ -41,7 +43,8 @@ namespace Inbanker
 							break;
 						case (3):
 							// Kill the access_token so we don't look like we are logged in anymore.
-							App.Current.Properties["access_token"] = "";
+							//App.Current.Properties["access_token"] = "";
+							dados.DeleteUsuario(eu.id_usuario);
 							// Make the main page the StartPage, which is where auth is launched from.
 							App.Current.MainPage = new LoginPage();
 							break;

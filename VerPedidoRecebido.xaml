@@ -24,21 +24,22 @@
 							</StackLayout>-->
 
 							<StackLayout Orientation="Horizontal">
-								<Label Text="Dias para o pagamento: " />
+								<Label Text="Dia do pagamento: " />
 								<Label x:Name="dias_pagamento" />
 							</StackLayout>
 
 							<StackLayout Orientation="Horizontal">
 								<Label Text="Rendimento:" />
-								<Label x:Name="valor_juros" />
+								<Label x:Name="valor_rendimento" />
 							</StackLayout>
 
-							<StackLayout Orientation="Vertical">
-								<Label x:Name="valor_taxa_fixa" />
-							</StackLayout>
+							<!--<StackLayout Orientation="Horizontal">
+								<Label Text="Valor de serviço:" />
+								<Label x:Name="valor_taxa_fixa"  />
+							</StackLayout>-->
 
 							<StackLayout Orientation="Horizontal">
-								<Label Text="Valor total: R$ " />
+								<Label Text="Valor total:" />
 								<Label x:Name="valor_total_pago" />
 							</StackLayout>
 

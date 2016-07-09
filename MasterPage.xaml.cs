@@ -19,6 +19,13 @@ namespace Inbanker
 			var masterPageItems = new List<MasterPageItem>();
 			masterPageItems.Add(new MasterPageItem
 			{
+				Title = "Inicio",
+				//IconSource = "contacts.png",
+				TargetType = typeof(InicioPage),
+				ParamType = 1, //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+			});
+			masterPageItems.Add(new MasterPageItem
+			{
 				Title = "Lista Amigos",
 				//IconSource = "contacts.png",
 				TargetType = typeof(ListaAmigos),

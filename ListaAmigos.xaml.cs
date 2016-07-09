@@ -33,7 +33,7 @@ namespace Inbanker
 					if (item == null)
 						return;
 
-					await Navigation.PushAsync(new SimuladorPage(eu.id_usuario, eu.nome_usuario, item.id, item.name,item.picture.data.url));
+					await Navigation.PushAsync(new SimuladorPage(eu.id_usuario, eu.nome_usuario, item.id, item.name,item.picture.data.url,list_amigos));
 				};
 
 			}

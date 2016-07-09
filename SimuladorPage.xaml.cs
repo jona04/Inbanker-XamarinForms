@@ -14,7 +14,7 @@ namespace Inbanker
 		public string valor;
 		Transacao trans;
 
-		public SimuladorPage(string id_user_logado, string nome_user_logado, string id_usuario, string nome, string img)
+		public SimuladorPage(string id_user_logado, string nome_user_logado, string id_usuario, string nome, string img,List<Amigos> list_amigos)
 		{
 			InitializeComponent();
 
@@ -63,7 +63,7 @@ namespace Inbanker
 				var result = await IsValid();
 				if (result)
 				{
-					await Navigation.PushAsync(new ResultadoSimulador(trans));
+					await Navigation.PushAsync(new ResultadoSimulador(trans,list_amigos));
 					//await DisplayAlert ("Alerta", "Valor :"+valor,"Ok");
 				}
 			};

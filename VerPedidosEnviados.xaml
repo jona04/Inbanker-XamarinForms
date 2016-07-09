@@ -18,26 +18,27 @@
 							</StackLayout>
 
 							<StackLayout Orientation="Horizontal">
-								<Label Text="Dias para vencimento: " />
+								<Label Text="Dia do vencimento: " />
 								<Label x:Name="lbldata_vencimento" Text="" />
 							</StackLayout>
 
-							<StackLayout Orientation="Horizontal">
+							<!--<StackLayout Orientation="Horizontal">
 								<Label Text="Dias corridos: " />
 								<Label x:Name="dias_corrido" Text=""/>
-							</StackLayout>
+							</StackLayout>-->
 
 						<StackLayout Orientation="Horizontal">
 								<Label Text="Valor do juros:" />
 								<Label x:Name="valor_juros" Text="" />
 							</StackLayout>
 
-						<StackLayout Orientation="Vertical">
-								<Label x:Name="valor_taxa_fixa" />
+						<StackLayout Orientation="Horizontal">
+								<Label Text="Valor de serviço:" />
+								<Label x:Name="valor_taxa_fixa"  />
 							</StackLayout>
 						
 							<StackLayout Orientation="Horizontal">
-								<Label Text="Valor total: R$ " />
+								<Label Text="Valor total:" />
 								<Label x:Name="valor_total_pago" Text="" />
 							</StackLayout>
 
@@ -60,7 +61,7 @@
 					<StackLayout x:Name="stack_confirm_receb" Orientation="Vertical" HorizontalOptions="Center" IsVisible="false">
 						<Label x:Name="msg_confirm_recb" HorizontalOptions="Center" />
 						<StackLayout Orientation="Horizontal">
-							<Button x:Name="btn_sim" Text="Sim" />
+							<Button x:Name="btn_sim" Text="Confirmar" />
 							<!--<Button x:Name="btn_nao" Text="Nao" />-->
 						</StackLayout>
 					</StackLayout>
