@@ -23,10 +23,25 @@ namespace Inbanker {
         private global::Xamarin.Forms.Label nome_usuario;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.StackLayout stack_msg_acc_pagamento;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label msg_acc_pagemento;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label valor_solicitado;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.StackLayout stack_data_pagamento;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label dias_pagamento;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.StackLayout stack_dias_corridos;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label dias_corridos;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label valor_rendimento;
@@ -62,21 +77,23 @@ namespace Inbanker {
         private global::Xamarin.Forms.StackLayout stack_btn_acc_pagamento;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label msg_acc_pagemento;
+        private global::Xamarin.Forms.Button btn_recusar_pagamento;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Button btn_confirmar_pagamento;
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button btn_recusar_pagamento;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(VerPedidoRecebido));
             img_usuario = this.FindByName <global::Xamarin.Forms.Image>("img_usuario");
             nome_usuario = this.FindByName <global::Xamarin.Forms.Label>("nome_usuario");
+            stack_msg_acc_pagamento = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_msg_acc_pagamento");
+            msg_acc_pagemento = this.FindByName <global::Xamarin.Forms.Label>("msg_acc_pagemento");
             valor_solicitado = this.FindByName <global::Xamarin.Forms.Label>("valor_solicitado");
+            stack_data_pagamento = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_data_pagamento");
             dias_pagamento = this.FindByName <global::Xamarin.Forms.Label>("dias_pagamento");
+            stack_dias_corridos = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_dias_corridos");
+            dias_corridos = this.FindByName <global::Xamarin.Forms.Label>("dias_corridos");
             valor_rendimento = this.FindByName <global::Xamarin.Forms.Label>("valor_rendimento");
             valor_total_pago = this.FindByName <global::Xamarin.Forms.Label>("valor_total_pago");
             senha = this.FindByName <global::Xamarin.Forms.Entry>("senha");
@@ -88,9 +105,8 @@ namespace Inbanker {
             stack_msg_pedido = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_msg_pedido");
             msg_pedido = this.FindByName <global::Xamarin.Forms.Label>("msg_pedido");
             stack_btn_acc_pagamento = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_btn_acc_pagamento");
-            msg_acc_pagemento = this.FindByName <global::Xamarin.Forms.Label>("msg_acc_pagemento");
-            btn_confirmar_pagamento = this.FindByName <global::Xamarin.Forms.Button>("btn_confirmar_pagamento");
             btn_recusar_pagamento = this.FindByName <global::Xamarin.Forms.Button>("btn_recusar_pagamento");
+            btn_confirmar_pagamento = this.FindByName <global::Xamarin.Forms.Button>("btn_confirmar_pagamento");
         }
     }
 }

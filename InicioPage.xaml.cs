@@ -31,9 +31,10 @@ namespace Inbanker
 				//Navigation.PushModalAsync(new PedidosRecebidos(eu));
 				App.Current.MainPage = new MainPageCS(new PedidosRecebidos());
 			};
-			this.btn_config.Clicked += async (sender, e) =>
+
+			this.btn_historico.Clicked += (sender, e) =>
 			{
-				await DisplayAlert("Alerta", "Essa funcao ainda nao foi habilitada", "Ok");
+				App.Current.MainPage = new MainPageCS(new PedidosParaPagar());
 			};
 		}
 	}

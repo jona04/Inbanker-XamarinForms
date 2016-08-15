@@ -133,6 +133,42 @@ namespace Inbanker
 			}
 		}
 
+
+		public async Task<string> ListaPedidosHistorico(string id_usu)
+		{
+
+			using (var client = new HttpClient())
+			{
+
+
+				var content = new FormUrlEncodedContent(new[]
+					{
+					new KeyValuePair<string, string>("user_id", id_usu)
+					});
+
+				var result = await client.PostAsync("http://inbanker.com/webservice/lista_pedidoshistorico.php", content);
+				return await result.Content.ReadAsStringAsync();
+			}
+		}
+
+		public async Task<string> ListaPedidosParaPagar(string id_usu)
+		{
+
+			using (var client = new HttpClient())
+			{
+
+
+				var content = new FormUrlEncodedContent(new[]
+					{
+					new KeyValuePair<string, string>("user_id", id_usu)
+					});
+
+				var result = await client.PostAsync("http://inbanker.com/webservice/lista_pedidosparapagar.php", content);
+				return await result.Content.ReadAsStringAsync();
+			}
+		}
+
+
 		public async Task<string> ListaPedidosFeitos(string id_usu)
 		{
 

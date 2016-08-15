@@ -30,7 +30,7 @@ namespace Inbanker
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
-				Title = "Lista Amigos",
+				Title = "Pedir empréstimo",
 				//IconSource = "contacts.png",
 				TargetType = typeof(ListaAmigos),
 				ParamType = 1, //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
@@ -44,9 +44,37 @@ namespace Inbanker
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
+				Title = "Pagamentos",
+				//IconSource = "todo.png",
+				TargetType = typeof(PedidosParaPagar),
+				ParamType = 1 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+			});
+			masterPageItems.Add(new MasterPageItem
+			{
 				Title = "Pedidos recebidos",
 				//IconSource = "todo.png",
 				TargetType = typeof(PedidosRecebidos),
+				ParamType = 1 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+			});
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "Historico",
+				//IconSource = "todo.png",
+				TargetType = typeof(PedidosHistorico),
+				ParamType = 1 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+			});
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "Configuraçoes",
+				//IconSource = "todo.png",
+				TargetType = typeof(InicioPage),
+				ParamType = 1 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
+			});
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "Ajuda",
+				//IconSource = "todo.png",
+				TargetType = typeof(InicioPage),
 				ParamType = 1 //especificamos o tipo de parametro para enviar os parametros certo quando forem chamandos no MainpageCS
 			});
 			masterPageItems.Add(new MasterPageItem

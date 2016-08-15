@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Inbanker.VerPedidosHistorico">
+	<ContentPage.Content>
+
+
+
+		<ScrollView>
+			<StackLayout Padding="10">
+				<StackLayout.Children>
+					<StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+							<Image x:Name="img_usuario" />
+							<Label x:Name="nome_usuario" />
+					</StackLayout>
+
+					<StackLayout x:Name="info_pedido" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Orientation="Vertical">
+
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Valor solicitado: " />
+							<Label x:Name="valor_solicitado" Text="" />
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Data finalizado: " />
+							<Label x:Name="data_finalizado" Text=""/>
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Valor do juros:" />
+							<Label x:Name="valor_juros" Text="" />
+						</StackLayout>
+
+					
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Valor total:" />
+							<Label x:Name="valor_total_pago" Text="" />
+						</StackLayout>
+					</StackLayout>
+				</StackLayout.Children>
+
+				<StackLayout x:Name="stack_msg">
+						<Label x:Name="msg" />
+					</StackLayout>
+			</StackLayout>
+		</ScrollView>
+
+		
+	</ContentPage.Content>
+</ContentPage>

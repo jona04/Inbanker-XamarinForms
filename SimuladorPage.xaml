@@ -22,7 +22,7 @@
 											<x:String>Outros valores</x:String>
 										</Picker.Items>
 									</Picker>
-									<!-- <Entry x:Name="valor2" Placeholder="Digite um valor..." /> -->
+									<Entry IsVisible="false" x:Name="valor_pedido2" Placeholder="Digite um valor..." />
 							</StackLayout>
 
 							<StackLayout Orientation="Vertical" Padding="10,10,10,10">

@@ -13,12 +13,12 @@
 
 				<StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
 					<StackLayout Orientation="Vertical">
-						<Button x:Name="btn_list_amigos" Text="Lista Amigos" />
+						<Button x:Name="btn_list_amigos" Text="Pedir Empréstimo" />
 						<Button x:Name="btn_pedidos_enviados" Text="Pedidos Enviados" />
 					</StackLayout>
 					<StackLayout Orientation="Vertical">
 						<Button x:Name="btn_pedidos_recebidos" Text="Pedidos Recebidos" />
-						<Button x:Name="btn_config" Text="Configuraçoes" />
+						<Button x:Name="btn_historico" Text="Pagamentos" />
 					</StackLayout>
 				</StackLayout>
 						

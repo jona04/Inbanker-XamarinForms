@@ -32,7 +32,7 @@ namespace Inbanker {
         private global::Xamarin.Forms.Button btn_pedidos_recebidos;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button btn_config;
+        private global::Xamarin.Forms.Button btn_historico;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
@@ -42,7 +42,7 @@ namespace Inbanker {
             btn_list_amigos = this.FindByName <global::Xamarin.Forms.Button>("btn_list_amigos");
             btn_pedidos_enviados = this.FindByName <global::Xamarin.Forms.Button>("btn_pedidos_enviados");
             btn_pedidos_recebidos = this.FindByName <global::Xamarin.Forms.Button>("btn_pedidos_recebidos");
-            btn_config = this.FindByName <global::Xamarin.Forms.Button>("btn_config");
+            btn_historico = this.FindByName <global::Xamarin.Forms.Button>("btn_historico");
         }
     }
 }

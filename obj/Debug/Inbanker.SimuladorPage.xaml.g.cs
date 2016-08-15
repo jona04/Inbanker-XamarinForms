@@ -26,6 +26,9 @@ namespace Inbanker {
         private global::Xamarin.Forms.Picker valor_pedido;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Entry valor_pedido2;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.DatePicker date_vencimento;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -37,6 +40,7 @@ namespace Inbanker {
             img_user = this.FindByName <global::Xamarin.Forms.Image>("img_user");
             nome_user = this.FindByName <global::Xamarin.Forms.Label>("nome_user");
             valor_pedido = this.FindByName <global::Xamarin.Forms.Picker>("valor_pedido");
+            valor_pedido2 = this.FindByName <global::Xamarin.Forms.Entry>("valor_pedido2");
             date_vencimento = this.FindByName <global::Xamarin.Forms.DatePicker>("date_vencimento");
             btn_Verificar = this.FindByName <global::Xamarin.Forms.Button>("btn_Verificar");
         }

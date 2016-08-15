@@ -11,6 +11,8 @@ namespace Inbanker
 		{
 			InitializeComponent();
 
+			Title = "Pedido emprestimo";
+
 			//pegamos os dados do usuario logado que esta no msqlite
 			AcessoDadosUsuario dados = new AcessoDadosUsuario();
 			var eu = dados.ObterUsuario();
@@ -37,10 +39,11 @@ namespace Inbanker
 			valor_taxa_fixa.Text = "Valor de serviço: R$ " + taxa_fixa2;
 
 			nome_user.Text = trans.trans_nome_user2;
-			valor_solicitado.Text = "R$ "+trans.trans_valor;
+			valor_solicitado.Text = "R$ "+String.Format("{0:0.00}", Double.Parse(trans.trans_valor));
 			data_vencimento.Text = trans.trans_vencimento;
 			dias_pagamento.Text = trans.trans_dias.ToString();
-			valor_total_pago.Text = total.ToString();
+
+			valor_total_pago.Text = String.Format("{0:0.00}", total);
 
 			btn_enviar_pedido.Clicked += async (sender, e) =>
 			{
@@ -64,7 +67,7 @@ namespace Inbanker
 						var result2 = await serviceWrapper.EnviarNotificacaoUsuario(trans,colunas[1]);
 						//lblNome2.Text = "get call says: " + result2;
 
-						await DisplayAlert("InBanker", "Pedido enviado, aguarde a resposta do(a) "+trans.trans_nome_user2, "Ok");
+						await DisplayAlert("InBanker", "Pedido enviado, aguarde a resposta de seu amigo(a) "+trans.trans_nome_user2, "Ok");
 
 						App.Current.MainPage = new MainPageCS(new InicioPage());
 

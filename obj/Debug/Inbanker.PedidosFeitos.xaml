@@ -16,9 +16,20 @@
 					￼
 				          <ListView.ItemTemplate>
 				          	<DataTemplate>
-				          		<TextCell Text="{Binding trans_nome_user2}" Detail="{Binding trans_valor}">
-				          			
-				          		</TextCell>
+
+								<ViewCell>
+			                        <StackLayout Orientation="Vertical">
+			                            <StackLayout Orientation="Horizontal">
+			                                <Label Text="Para: " FontSize="13"/>
+											<Label Text="{Binding trans_nome_user2}"/>
+										</StackLayout>
+			                            <Label Text="{Binding trans_data_pedido}"/>
+			                        </StackLayout>
+			                    </ViewCell>
+							
+					          		<!--<TextCell Text="{Binding trans_nome_user2}" Detail="{Binding trans_valor}">
+					          			
+					          		</TextCell>-->
 				          	</DataTemplate>
 				          </ListView.ItemTemplate>
 

@@ -27,7 +27,7 @@ namespace Inbanker
 			//carregando.Text = result;
 
 			if (result.Equals("menor")){
-				carregando.Text = "Voce ainda nao fez nenhuma pedido de emprestimo.";
+				carregando.Text = "Voce nao tem pedidos feitos no momento.";
 			}else { 
 				
 				stack_load.IsVisible = false;

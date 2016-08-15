@@ -11,6 +11,15 @@
 							<Label x:Name="nome_usuario" />
 					</StackLayout>
 
+					<StackLayout IsVisible="false" x:Name="stack_msg_acc_pagamento" Orientation="Vertical" VerticalOptions="Center">
+						
+						<StackLayout Orientation="Vertical">
+							<Label  x:Name="msg_acc_pagemento" Text="" />
+
+						</StackLayout>
+
+					</StackLayout>
+					
 					<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Orientation="Vertical">
 
 							<StackLayout Orientation="Horizontal">
@@ -23,9 +32,14 @@
 								<Label x:Name="data_vencimento" />
 							</StackLayout>-->
 
-							<StackLayout Orientation="Horizontal">
-								<Label Text="Dia do pagamento: " />
+							<StackLayout x:Name="stack_data_pagamento" Orientation="Horizontal">
+								<Label Text="Data do pagamento: " />
 								<Label x:Name="dias_pagamento" />
+							</StackLayout>
+
+							<StackLayout IsVisible="false" x:Name="stack_dias_corridos" Orientation="Horizontal">
+								<Label Text="Dias corridos: " />
+								<Label x:Name="dias_corridos" />
 							</StackLayout>
 
 							<StackLayout Orientation="Horizontal">
@@ -72,16 +86,17 @@
 					<StackLayout IsVisible="false" x:Name="stack_btn_acc_pagamento" Orientation="Vertical" VerticalOptions="Center">
 						
 						<StackLayout Orientation="Vertical">
-							<Label  x:Name="msg_acc_pagemento" Text="" />
+							
 							<Label Text="Voce confirma o recebimento do valor?" />
 						</StackLayout>
 						<StackLayout Orientation="Horizontal">
 							<StackLayout>
-								<Button x:Name="btn_confirmar_pagamento" Text="Sim" />
-							</StackLayout>
-							<StackLayout>
 								<Button x:Name="btn_recusar_pagamento" Text="Nao" />
 							</StackLayout>
+							<StackLayout>
+								<Button x:Name="btn_confirmar_pagamento" Text="Sim" />
+							</StackLayout>
+
 						</StackLayout>
 					</StackLayout>
 

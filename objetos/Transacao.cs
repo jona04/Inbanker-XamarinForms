@@ -18,6 +18,7 @@ namespace Inbanker
 		public string trans_resposta_pedido { get; set; }
 		public string trans_resposta_pagamento { get; set; }
 		public string trans_recebimento_empre { get; set; }
+		public string trans_data_finalizada { get; set; }
 
 	}
 }

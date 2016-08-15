@@ -23,16 +23,25 @@ namespace Inbanker {
         private global::Xamarin.Forms.Label nome_usuario;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.StackLayout info_pedido;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label valor_solicitado;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lbldata_vencimento;
+        private global::Xamarin.Forms.StackLayout stack_dias_corridos;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label dias_corrido;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.StackLayout stack_data_pagamento;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label dias_pagamento;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label valor_juros;
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label valor_taxa_fixa;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label valor_total_pago;
@@ -59,26 +68,26 @@ namespace Inbanker {
         private global::Xamarin.Forms.Label msg_confirm_recb;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Entry senha2;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Button btn_sim;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.StackLayout stack_solicitar_pag;
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label msg_solicitar_pag;
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button btn_solicitar_pags;
+        private global::Xamarin.Forms.Button btn_nao;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(VerPedidosEnviados));
             img_usuario = this.FindByName <global::Xamarin.Forms.Image>("img_usuario");
             nome_usuario = this.FindByName <global::Xamarin.Forms.Label>("nome_usuario");
+            info_pedido = this.FindByName <global::Xamarin.Forms.StackLayout>("info_pedido");
             valor_solicitado = this.FindByName <global::Xamarin.Forms.Label>("valor_solicitado");
-            lbldata_vencimento = this.FindByName <global::Xamarin.Forms.Label>("lbldata_vencimento");
+            stack_dias_corridos = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_dias_corridos");
+            dias_corrido = this.FindByName <global::Xamarin.Forms.Label>("dias_corrido");
+            stack_data_pagamento = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_data_pagamento");
+            dias_pagamento = this.FindByName <global::Xamarin.Forms.Label>("dias_pagamento");
             valor_juros = this.FindByName <global::Xamarin.Forms.Label>("valor_juros");
-            valor_taxa_fixa = this.FindByName <global::Xamarin.Forms.Label>("valor_taxa_fixa");
             valor_total_pago = this.FindByName <global::Xamarin.Forms.Label>("valor_total_pago");
             senha = this.FindByName <global::Xamarin.Forms.Entry>("senha");
             lblNome = this.FindByName <global::Xamarin.Forms.Label>("lblNome");
@@ -87,10 +96,9 @@ namespace Inbanker {
             msg = this.FindByName <global::Xamarin.Forms.Label>("msg");
             stack_confirm_receb = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_confirm_receb");
             msg_confirm_recb = this.FindByName <global::Xamarin.Forms.Label>("msg_confirm_recb");
+            senha2 = this.FindByName <global::Xamarin.Forms.Entry>("senha2");
             btn_sim = this.FindByName <global::Xamarin.Forms.Button>("btn_sim");
-            stack_solicitar_pag = this.FindByName <global::Xamarin.Forms.StackLayout>("stack_solicitar_pag");
-            msg_solicitar_pag = this.FindByName <global::Xamarin.Forms.Label>("msg_solicitar_pag");
-            btn_solicitar_pags = this.FindByName <global::Xamarin.Forms.Button>("btn_solicitar_pags");
+            btn_nao = this.FindByName <global::Xamarin.Forms.Button>("btn_nao");
         }
     }
 }

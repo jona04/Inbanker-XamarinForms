@@ -14,6 +14,8 @@ namespace Inbanker
 		public string valor;
 		Transacao trans;
 
+		bool other_value = false;
+
 		public SimuladorPage(string id_user_logado, string nome_user_logado, string id_usuario, string nome, string img)
 		{
 			InitializeComponent();
@@ -46,13 +48,20 @@ namespace Inbanker
 			valor_pedido.SelectedIndexChanged += (sender, e) =>
 			{
 				int selectedIndex = valor_pedido.SelectedIndex;
-				//if (selectedIndex == -1)
-				//	return;
-
-				valor = valor_pedido.Items[selectedIndex];
-
-				trans.trans_valor = valor_pedido.Items[selectedIndex];
+				if (selectedIndex == 3)
+				{
+					valor_pedido2.IsVisible = true;
+					other_value = true;
+				}
+				else 
+				{
+					valor_pedido2.IsVisible = false;
+					other_value = false;
+					valor = valor_pedido.Items[selectedIndex];
+					trans.trans_valor = valor;
+				}
 			};
+			     
 			date_vencimento.DateSelected += (sender, e) =>
 			{
 				dias = (date_vencimento.Date - dayNow).Days;
@@ -64,7 +73,14 @@ namespace Inbanker
 
 			btn_Verificar.Clicked += async (sender, e) =>
 			{
+				if (other_value == true)
+				{
+					valor = valor_pedido2.Text;
+					trans.trans_valor = valor;
+				}	
+
 				var result = await IsValid();
+
 				if (result)
 				{
 					await Navigation.PushAsync(new ResultadoSimulador(trans));
@@ -86,7 +102,6 @@ namespace Inbanker
 				await DisplayAlert("Alerta", "Valor deve ser preenchido", "Ok");
 				return false;
 			};
-
 
 			return true;
 		}
