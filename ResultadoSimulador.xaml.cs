@@ -29,6 +29,7 @@ namespace Inbanker
 			double taxa_fixa = Math.Round(capital * 0.0099, 2, MidpointRounding.ToEven);
 
 			double total = juros_mensal + taxa_fixa + capital;
+			string total_moeda = String.Format("{0:C}", total); //Moeda
 
 			string juros_mensal2 = String.Format("{0:0.00}", juros_mensal);
 			string taxa_fixa2 = String.Format("{0:0.00}", taxa_fixa);
@@ -39,11 +40,11 @@ namespace Inbanker
 			valor_taxa_fixa.Text = "Valor de serviço: R$ " + taxa_fixa2;
 
 			nome_user.Text = trans.trans_nome_user2;
-			valor_solicitado.Text = "R$ "+String.Format("{0:0.00}", Double.Parse(trans.trans_valor));
+			valor_solicitado.Text = "R$ "+trans.trans_valor;
 			data_vencimento.Text = trans.trans_vencimento;
 			dias_pagamento.Text = trans.trans_dias.ToString();
 
-			valor_total_pago.Text = String.Format("{0:0.00}", total);
+			valor_total_pago.Text = total_moeda;
 
 			btn_enviar_pedido.Clicked += async (sender, e) =>
 			{

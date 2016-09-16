@@ -26,14 +26,12 @@ namespace Inbanker
 			string juros_mensal_string = String.Format("{0:0.00}", juros_mensal);
 
 			double total = juros_mensal + capital;
-			string total_string = String.Format("{0:0.00}", total);
+			string total_moeda = String.Format("{0:C}", total); //Moeda
 
-			string valor = String.Format("{0:0.00}", Double.Parse(trans.trans_valor));
-
-			valor_solicitado.Text = "R$ " + valor;
+			valor_solicitado.Text = trans.trans_valor;
 			dias_corrido.Text = dias.ToString();
 			valor_juros.Text = "R$ " + juros_mensal_string;
-			valor_total_pago.Text = "R$ " + total_string;
+			valor_total_pago.Text = total_moeda;
 
 
 			if (trans.trans_resposta_pagamento.Equals("0")) //usuario 1 ainda esta para solicitar quitacao de pagamento

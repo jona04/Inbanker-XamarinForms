@@ -38,7 +38,7 @@
 							</StackLayout>
 
 							<StackLayout Orientation="Horizontal">
-								<Label Text="Valor total: R$ " />
+								<Label Text="Valor total:" />
 								<Label x:Name="valor_total_pago" />
 							</StackLayout>
 

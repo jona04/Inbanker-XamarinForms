@@ -18,32 +18,25 @@ namespace Inbanker
 
 			nome_usuario.Text = trans.trans_nome_user2;
 
-			DateTime dayNow = DateTime.Now;
-			DateTime oDate = DateTime.Parse(trans.trans_data_pedido);
-			var dias = (dayNow - oDate).Days;
-
 			//fomula para calcular o valor total a ser pago, ao mesmo tempo que arredondamos o resultado final para 2 casas decimais depois da virgula
 			double capital = double.Parse(trans.trans_valor);
 
-			if (trans.trans_resposta_pedido == "0")
-				juros_mensal = Math.Round(capital * (0.00066333 * trans.trans_dias), 2);
-			else
-				juros_mensal = Math.Round(capital * (0.00066333 * dias), 2);
+			juros_mensal = Math.Round(capital * (0.00066333 * trans.trans_dias), 2);
 
+			double taxa_fixa = Math.Round(capital * 0.0099, 2, MidpointRounding.ToEven);
 
 			string juros_mensal_string = String.Format("{0:0.00}", juros_mensal);
+			string taxa_fixa2 = String.Format("{0:0.00}", taxa_fixa);
 
-			double total = juros_mensal + capital;
-			string total_string = String.Format("{0:0.00}", total);
-
-			string valor = String.Format("{0:0.00}", Double.Parse(trans.trans_valor));
+			//double total = juros_mensal + capital;
+			double total = juros_mensal + taxa_fixa + capital;
+			string total_moeda = String.Format("{0:C}", total); //Moeda
 
 			dias_pagamento.Text = trans.trans_vencimento;
-
-			valor_solicitado.Text = "R$ "+valor;
-			dias_corrido.Text = dias.ToString();
+			valor_taxa_fixa.Text = "Valor de serviço: R$ " + taxa_fixa2;
+			valor_solicitado.Text = "R$ "+trans.trans_valor;
 			valor_juros.Text = "R$ "+juros_mensal_string;
-			valor_total_pago.Text = "R$ "+total_string;
+			valor_total_pago.Text = total_moeda;
 
 
 			//manipulamos o xmal de acordo com a resposta dada ao pedido
@@ -57,13 +50,11 @@ namespace Inbanker
 				//	break;
 				case (2): // o usuario 2 aceitou o pedido de emprestimo
 
-					stack_data_pagamento.IsVisible = false;
-					stack_dias_corridos.IsVisible = true;
-
 					if (trans.trans_recebimento_empre.Equals("0")) //usuario 1 ainda nao recebeu o valor do emprestimo
 					{
-						info_pedido.IsVisible = false;
+						info_pedido.IsVisible = true;
 						stack_confirm_receb.IsVisible = true;
+						btn_confirm_receb.IsVisible = true;
 						msg.Text = "Seu amigo "+trans.trans_nome_user2+" aceitou seu pedido de emprestimo.";
 						msg_confirm_recb.Text = "Confirme o recebimento do valor solicitado.";
 					}
@@ -75,7 +66,7 @@ namespace Inbanker
 
 			btn_sim.Clicked += async (sender, e) =>
 			{
-				if (senha2.Text == "admin")
+				if (senha.Text == "admin")
 				{
 
 
@@ -103,7 +94,7 @@ namespace Inbanker
 
 			btn_nao.Clicked += async (sender, e) =>
 			{
-				if (senha2.Text == "admin")
+				if (senha.Text == "admin")
 				{
 
 

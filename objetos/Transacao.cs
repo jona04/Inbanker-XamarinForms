@@ -10,7 +10,22 @@ namespace Inbanker
 		public string trans_id_user2 { get; set; }
 		public string trans_nome_user1 { get; set; }
 		public string trans_nome_user2 { get; set; }
-		public string trans_valor { get; set; }
+
+		private string _trans_valor;
+		public string trans_valor
+		{
+			get
+			{
+				string valor_moeda = String.Format("{0:C}", _trans_valor); //Moeda
+				return valor_moeda;
+			}
+
+			set
+			{
+				_trans_valor = value;
+			}
+		}
+
 		public string trans_vencimento { get; set; }
 		public string trans_data_pedido { get; set; }
 		public int trans_dias { get; set; }

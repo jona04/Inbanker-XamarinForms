@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Inbanker
 {
+
 	public partial class SimuladorPage : ContentPage
 	{
 
@@ -15,6 +17,7 @@ namespace Inbanker
 		Transacao trans;
 
 		bool other_value = false;
+
 
 		public SimuladorPage(string id_user_logado, string nome_user_logado, string id_usuario, string nome, string img)
 		{
@@ -38,7 +41,6 @@ namespace Inbanker
 			nome_user.Text = nome;
 			img_user.Source = img;
 
-
 			//setamos um valor maximo para o datepicker
 			DateTime dayNow = DateTime.Now;
 			DateTime expiryDay = dayNow.AddDays(60 + 1);
@@ -50,18 +52,20 @@ namespace Inbanker
 				int selectedIndex = valor_pedido.SelectedIndex;
 				if (selectedIndex == 3)
 				{
-					valor_pedido2.IsVisible = true;
+					valor_pedido_outro.IsVisible = true;
 					other_value = true;
 				}
 				else 
 				{
-					valor_pedido2.IsVisible = false;
+					valor_pedido_outro.IsVisible = false;
 					other_value = false;
 					valor = valor_pedido.Items[selectedIndex];
 					trans.trans_valor = valor;
 				}
 			};
-			     
+
+			valor_pedido_outro.TextChanged += valorOutroTextChanged;
+
 			date_vencimento.DateSelected += (sender, e) =>
 			{
 				dias = (date_vencimento.Date - dayNow).Days;
@@ -75,7 +79,7 @@ namespace Inbanker
 			{
 				if (other_value == true)
 				{
-					valor = valor_pedido2.Text;
+					valor = valor_pedido_outro.Text;
 					trans.trans_valor = valor;
 				}	
 
@@ -104,6 +108,32 @@ namespace Inbanker
 			};
 
 			return true;
+		}
+
+		void valorOutroTextChanged(object sender, EventArgs e)
+		{ 
+			string s = valor_pedido_outro.Text;
+
+			//se o valor começar com '.', o removemos
+			//if (s.StartsWith(".")
+			//{
+			//	s.Remove(1, 1);
+			//	textBox1.Text = s;
+			//}
+
+			//se termina com ',' ou se o valor for vazio (""), não acontece nada
+			if (s.EndsWith(",") || s.Equals("")) { }
+			else
+			{
+				float texto = float.Parse(s);
+				string Formato1 = String.Format("{0:C}", texto); //Moeda
+				AtualizaTexto(Formato1.Remove(0, 3));
+			}
+		}
+		private void AtualizaTexto(string Formato1)
+		{
+			//label1.Text = Formato1;
+			valor_pedido_outro.Text = Formato1;
 		}
 	}
 }

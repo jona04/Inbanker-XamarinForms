@@ -54,6 +54,7 @@ namespace Inbanker
 
 				if (!loggedIn)
 				{
+					
 					// If we aren't logged in, then this may be the first time we're starting the app, in which case we want to
 					// jam some settings in for our auth that we can retrieve later.  
 					// But MAYBE, we are re-launching an app that was not logged in, in which case jamming these values in would 
@@ -65,9 +66,6 @@ namespace Inbanker
 						Current.Properties.Add("authorizeUrl", "https://m.facebook.com/dialog/oauth/");
 						Current.Properties.Add("redirectUrl", "https://www.facebook.com/connect/login_success.html");
 
-						// These are not applicable for facebook login
-						//App.Current.Properties.Add("clientSecret", "na");
-						//App.Current.Properties.Add("accessTokenUrl", "na");
 
 					}
 					catch
@@ -77,10 +75,24 @@ namespace Inbanker
 					// The root page of your application before login.
 					MainPage = new LoginPage();
 
+
 				}
 				else {
-					// se estiver logado, ele ira capturar os dados do usuario atraves de uma redenrer page, e depois sera redirecionado para lista de amigos
-					MainPage = new RedirectLogin();
+
+					//teste de coneccao
+					var networkConnection = DependencyService.Get<INetworkConnection>();
+					networkConnection.CheckNetworkConnection();
+					if (networkConnection.IsConnected)
+					{
+						// se estiver logado, ele ira capturar os dados do usuario atraves de uma redenrer page, e depois sera redirecionado para lista de amigos
+						MainPage = new RedirectLogin();
+
+					}
+					else
+					{
+						// The root page of your application
+						MainPage = new NavigationPage(new InicioPage());
+					}
 				}
 			}
 			else {

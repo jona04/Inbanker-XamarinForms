@@ -9,7 +9,7 @@ namespace Inbanker
 		public string name { get; set; }
 		public string url_picture { get; set;}
 
-		[Ignore]
+		[Ignore] //para nao ser utilizado no sqlite
 		public Picture picture { get; set; }
 
 	}

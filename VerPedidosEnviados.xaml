@@ -10,6 +10,15 @@
 							<Label x:Name="nome_usuario" />
 					</StackLayout>
 
+					<StackLayout x:Name="stack_msg">
+						<Label x:Name="msg" />
+					</StackLayout>
+					
+					<StackLayout x:Name="stack_confirm_receb" Orientation="Vertical" HorizontalOptions="Center" IsVisible="false">
+						<Label x:Name="msg_confirm_recb" HorizontalOptions="Center" />
+
+					</StackLayout>
+					
 					<StackLayout x:Name="info_pedido" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Orientation="Vertical">
 
 							<StackLayout Orientation="Horizontal">
@@ -17,10 +26,6 @@
 								<Label x:Name="valor_solicitado" Text="" />
 							</StackLayout>
 
-							<StackLayout IsVisible="false" x:Name="stack_dias_corridos" Orientation="Horizontal">
-								<Label Text="Dias corridos: " />
-								<Label x:Name="dias_corrido" Text=""/>
-							</StackLayout>
 
 						<StackLayout x:Name="stack_data_pagamento" Orientation="Horizontal">
 								<Label Text="Data do pagamento: " />
@@ -30,6 +35,9 @@
 						<StackLayout Orientation="Horizontal">
 								<Label Text="Valor do juros:" />
 								<Label x:Name="valor_juros" Text="" />
+							</StackLayout>
+						<StackLayout Orientation="Vertical">
+								<Label x:Name="valor_taxa_fixa" />
 							</StackLayout>
 						
 							<StackLayout Orientation="Horizontal">
@@ -49,23 +57,9 @@
 							</StackLayout>
 					</StackLayout>
 					
-
-					
-					<StackLayout x:Name="stack_msg">
-						<Label x:Name="msg" />
-					</StackLayout>
-					
-					<StackLayout x:Name="stack_confirm_receb" Orientation="Vertical" HorizontalOptions="Center" IsVisible="false">
-						<Label x:Name="msg_confirm_recb" HorizontalOptions="Center" />
-
-						<StackLayout Orientation="Horizontal">
-								<Entry x:Name="senha2" IsPassword="true" Placeholder="Informe sua senha..." />
-							</StackLayout>
-						
-						<StackLayout Orientation="Horizontal">
-							<Button x:Name="btn_sim" Text="Confirmar" />
-							<Button x:Name="btn_nao" Text="Cancela" />
-						</StackLayout>
+					<StackLayout x:Name="btn_confirm_receb" Orientation="Horizontal" IsVisible="false">
+						<Button x:Name="btn_sim" Text="Confirmar" />
+						<Button x:Name="btn_nao" Text="Cancela" />
 					</StackLayout>
 
 				</StackLayout.Children>

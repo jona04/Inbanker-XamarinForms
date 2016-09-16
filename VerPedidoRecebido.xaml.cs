@@ -41,18 +41,16 @@ namespace Inbanker
 
 
 			string juros_mensal2 = String.Format("{0:0.00}", juros_mensal);
-			valor_rendimento.Text = "R$ " + juros_mensal2;
 
 			double total = juros_mensal + capital;
-			string valor_total = String.Format("{0:0.00}", total);
+			string total_moeda = String.Format("{0:C}", total); //Moeda
 
-			string valor = String.Format("{0:0.00}", Double.Parse(trans.trans_valor));
-
-			valor_solicitado.Text = "R$ "+valor;
+			valor_solicitado.Text = trans.trans_valor;
 			dias_pagamento.Text = trans.trans_vencimento;
+			valor_rendimento.Text = "R$ " + juros_mensal2;
 			dias_corridos.Text = dias.ToString();
 
-			valor_total_pago.Text = "R$ "+valor_total;
+			valor_total_pago.Text = total_moeda;
 
 
 			//manipulamos o xmal de acordo com a resposta dada ao pedido

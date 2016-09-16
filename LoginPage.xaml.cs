@@ -12,7 +12,18 @@ namespace Inbanker
 
 			this.btnLogar.Clicked += (sender, e) =>
 			{
-				Navigation.PushModalAsync(new Login());
+				//teste de coneccao
+				var networkConnection = DependencyService.Get<INetworkConnection>();
+				networkConnection.CheckNetworkConnection();
+				if (networkConnection.IsConnected)
+				{
+					Navigation.PushModalAsync(new Login());
+
+				}
+				else
+				{
+					App.Current.MainPage = new NavigationPage(new PageNoConnection());
+				}
 			};
 
 		}

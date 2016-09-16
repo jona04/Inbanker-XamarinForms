@@ -83,6 +83,9 @@
     <EmbeddedResource Include="VerPedidosParaPagar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="PageNoConnection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -118,7 +121,6 @@
       <DependentUpon>ResultadoSimulador.xaml</DependentUpon>
     </Compile>
     <Compile Include="Webservice\ServiceWrapper.cs" />
-    <Compile Include="ResultPlayService.cs" />
     <Compile Include="Objetos\Transacao.cs" />
     <Compile Include="PedidosFeitos.xaml.cs">
       <DependentUpon>PedidosFeitos.xaml</DependentUpon>
@@ -135,7 +137,6 @@
     <Compile Include="RedirectLogin.xaml.cs">
       <DependentUpon>RedirectLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IConfig.cs" />
     <Compile Include="SQLite\AcessoDadosUsuario.cs" />
     <Compile Include="InicioPage.xaml.cs">
       <DependentUpon>InicioPage.xaml</DependentUpon>
@@ -153,6 +154,14 @@
     <Compile Include="VerPedidosParaPagar.xaml.cs">
       <DependentUpon>VerPedidosParaPagar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ResultPlayService.cs" />
+    <Compile Include="Interfaces\INetworkConnection.cs" />
+    <Compile Include="Interfaces\IConfig.cs" />
+    <Compile Include="PageNoConnection.xaml.cs">
+      <DependentUpon>PageNoConnection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQLite\AcessoDadosTransacoes.cs" />
+    <Compile Include="Util\CurrencyConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
@@ -187,6 +196,8 @@
     <Folder Include="Objetos\" />
     <Folder Include="Webservice\" />
     <Folder Include="SQLite\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
